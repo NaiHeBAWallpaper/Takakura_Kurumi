@@ -704,6 +704,22 @@ function load(dynamicBinaryPath, dynamicAtlasPath) {
 	canvas.style.visibility = 'visible';
 }
 
+const GLARE_SLOTS = new Set([
+	"FX_01", "FX_04"
+]);
+const GLARE_OPACITY = 0.24;
+
+// Scale attachment opacity once so animated slot colors still control the light.
+function applyGlareOpacity(skeletonData) {
+	for (const skin of skeletonData.skins) {
+		for (const { slotIndex, attachment } of skin.getAttachments()) {
+			const slot = skeletonData.slots[slotIndex];
+			if (!GLARE_SLOTS.has(slot.name) || slot.blendMode !== 1 || !attachment.color) continue;
+			attachment.color.a *= GLARE_OPACITY;
+		}
+	}
+}
+
 function loadSpineData(binaryPath, atlasPath, premultipliedAlpha) {
 	// Load the texture atlas from the AssetManager.
 	let atlas = assetManager.get(atlasPath);
@@ -717,6 +733,7 @@ function loadSpineData(binaryPath, atlasPath, premultipliedAlpha) {
 	// Set the scale to apply during parsing, parse the file, and create a new skeleton.
 	skeletonBinary.scale = 1;
 	let skeletonData = skeletonBinary.readSkeletonData(assetManager.get(binaryPath));
+	applyGlareOpacity(skeletonData);
 	let skeleton = new spine.Skeleton(skeletonData);
 	let bounds = calculateSetupPoseBounds(skeleton);
 
@@ -741,9 +758,7 @@ function calculateSetupPoseBounds(skeleton) {
 let slotsHidden = false;
 
 // 定义需要隐藏的骨骼名称列表（全局变量）
-const slotsToHide = [
-	"FX_01", "FX_02", "FX_03", "FX_04"	
-];
+const slotsToHide = ["FX_02","FX_03"];
 
 function hideSpecifiedSlots() {
 	if (spineData && spineData.skeleton) {
