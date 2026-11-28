@@ -44,7 +44,8 @@ const subtitleLocales = {
 	Chinese: 'zh-Hans',
 	TraditionalChinese: 'zh-Hant',
 	Japanese: 'ja',
-	Korean: 'ko'
+	Korean: 'ko',
+	Thai: 'th'
 };
 
 const CHARACTER = 'CH0173';
@@ -60,17 +61,18 @@ const AUDIO_DETAIL = [
                 "なっ！な、なによ先生、いつからいたの？"
             ],
             English: [
-                "Wha—! Wh-What is it, Sensei? Since when were you there?"
+                "Wh-What? When did you get here, Sensei?"
             ],
             Chinese: [
                 "什！什、什么嘛老师，你什么时候就在这里的？"
             ],
             TraditionalChinese: [
-                "什！什、什麼嘛老師，你什麼時候就在這裡的？"
+                "什──！什，什麼啊老師，你什麼時候來的？"
             ],
             Korean: [
-                "무슨 일이야, 선생님?"
-            ]
+                "뭐, 뭐야? 선생님, 언제 왔어?"
+            ],
+            Thai: ["อะ... อะไรน่ะ? คุณครู มาตั้งแต่ตอนไหน?"]
         }
     },
     {
@@ -80,21 +82,22 @@ const AUDIO_DETAIL = [
                 "ただ……ちょっとタイミングが難しくて……。"
             ],
             English: [
-                "I-I'm not nervous at all!",
-                "It's just... the timing is a bit tricky..."
+                "I-I'm not! I'm not nervous at all!",
+                "It's just... I'm having a bit of a tough time getting the timing right..."
             ],
             Chinese: [
                 "我、我才没有紧张呢！",
                 "只是…… 时机有点难把握而已……。"
             ],
             TraditionalChinese: [
-                "我、我才沒有緊張呢！",
-                "只是…… 時機有點難把握而已……。"
+                "我，我才沒有緊張呢！",
+                "只是……有點難掌握時機……"
             ],
             Korean: [
-                "난 신경쓰지 않아!",
-                "그냥... 시기가 좀 까다로워..."
-            ]
+                "따, 딱히 긴장 같은 거 하지 않았거든!",
+                "나는 그저…… 타이밍 재는 게 조금 어려워서……"
+            ],
+            Thai: ["ฉะ... ฉันไม่ได้ประหม่า อะไรสักหน่อย!","ฉันก็แค่... รู้สึกว่าการกะจังหวะ มันค่อนข้างยากน่ะ..."]
         }
     },
     {
@@ -106,9 +109,9 @@ const AUDIO_DETAIL = [
                 "に、にっ！",
             ],
             English: [
-                "<Capturing photo—>",
-                "<3, 2, 1.>",
-                "S-Smile!",
+                "\"Look over here\"",
+                "\"One. Two. Three.\"",
+                "H-Haha.",
             ],
             Chinese: [
                 "<正在进行摄影。>",
@@ -116,15 +119,16 @@ const AUDIO_DETAIL = [
                 "茄、茄子！",
             ],
             TraditionalChinese: [
-                "<正在進行攝影。>",
-                "<3、2、1。>",
-                "茄、茄子！"
+                "「開始拍攝──」",
+                "「三，二，一。」",
+                "嘻，嘻！"
             ],
             Korean: [
-                "＜촬영을 시작합니다—＞",
-                "<3, 2, 1.>",
-                "미소!"
-            ]
+                "<여기 보세요—>",
+                "<하나, 둘, 셋.>",
+                "아, 아핫."
+            ],
+            Thai: ["<มองตรงนี้นะคะ>","<หนึ่ง สอง สาม>","อะ... อ๊ะ"]
         }
     },
     {
@@ -134,21 +138,22 @@ const AUDIO_DETAIL = [
                 "数字を数えられると、なんか緊張しちゃうのよね……。"
             ],
             English: [
-                "Ugh... I closed my eyes again...",
-                "Whenever someone counts down, I just get so nervous..."
+                "Ugh... I closed my eyes again.",
+                "For some reason, the counting makes me nervous."
             ],
             Chinese: [
                 "唔…… 又不自觉闭上眼睛了……。",
                 "被人倒数盯着，总会莫名紧张起来……。"
             ],
             TraditionalChinese: [
-                "唔…… 又不自覺閉上眼睛了……。",
-                "被人倒數盯著，總會莫名緊張起來……。"
+                "嗚……又閉眼睛了……",
+                "如果倒數的話，會莫名地有點緊張呢……"
             ],
             Korean: [
-                "다시 눈을 감았어요",
-                "누군가 계산을 하면 너무 긴장해..."
-            ]
+                "으윽…… 또 눈을 감아 버렸어.",
+                "누가 숫자를 세면 이상하게 긴장이 되어서—"
+            ],
+            Thai: ["อึก... เผลอหลับตาอีกจนได้","พอได้ยินใครนับเลข ฉันก็จะประหม่าขึ้นมาแปลกๆ น่ะ"]
         }
     },
     {
@@ -157,17 +162,18 @@ const AUDIO_DETAIL = [
                 "あ、いや！緊張してるわけじゃないのよ！ただ、目を瞑っちゃうだけで――"
             ],
             English: [
-                "Ah, no! It's not that I'm nervous! I just happen to close my eyes—"
+                "N-No, wait. I never get nervous! I just closed my eyes without thinking..."
             ],
             Chinese: [
                 "啊、才没有！我才没有紧张！只是单纯闭上眼睛而已――"
             ],
             TraditionalChinese: [
-                "啊、才沒有！我才沒有緊張！只是單純閉上眼睛而已――"
+                "啊，不是！我才沒有緊張哦！只是會不小心閉上眼睛──"
             ],
             Korean: [
-                "아, 아니! 긴장한 건 아니야! 그냥 눈이 감기는 것뿐이라서—"
-            ]
+                "아, 아니. 긴장한 게 아니라! 자꾸 무의식적으로 눈을 감아서—"
+            ],
+            Thai: ["มะ... ไม่สิ ไม่ได้ประหม่า! แค่มันชอบหลับตาอัตโนมัติ ไปเองต่างหาก"]
         }
     },
     {
@@ -180,10 +186,10 @@ const AUDIO_DETAIL = [
                 "に、にっ！"
             ],
             English: [
-                "<Capturing photo—>",
-                "Here it comes!",
-                "<3, 2, 1.>",
-                "S-Smile!"
+                "\"Look over here\"",
+                "Here I go...!",
+                "\"One. Two. Three.\"",
+                "Haha."
             ],
             Chinese: [
                 "<正在进行摄影。>",
@@ -192,36 +198,38 @@ const AUDIO_DETAIL = [
                 "茄、茄子！"
             ],
             TraditionalChinese: [
-                "<正在進行攝影。>",
-                "……！！來了！",
-                "<3、2、1。>",
-                "茄、茄子！"
+                "「開始拍攝──」",
+                "來了……！",
+                "「三，二，一。」",
+                "嘻，嘻！"
             ],
             Korean: [
-                "＜촬영을 시작합니다—＞",
-                "……!! 왔다!",
-                "<3, 2, 1.>",
-                "미소!"
-            ]
+                "<여기 보세요—>",
+                "온다……!",
+                "<하나, 둘, 셋.>",
+                "아핫."
+            ],
+            Thai: ["<มองตรงนี้นะคะ>","มาแล้ว...!","<หนึ่ง สอง สาม>","อ๊ะ"]
         }
     },
     {
         dialog: {
             Japanese: [
-                "もう！また閉じちゃった……なんでなのよー！"
+                "もう！また閉じちゃった……なんでなのよー！　"
             ],
             English: [
-                "Geez! I closed them again... Why does this keep happening!?"
+                "Why?! Why do I keep closing my eyes?!"
             ],
             Chinese: [
                 "真是的！又闭上眼了…… 到底为什么嘛！"
             ],
             TraditionalChinese: [
-                "真是的！又閉上眼了…… 到底為什麼嘛！"
+                "真是的！又閉眼了……為什麼會這樣啦──！　"
             ],
             Korean: [
-                "다시 닫았어 왜 이런 일이 계속 일어나고 있어?"
-            ]
+                "그러니까! 왜 자꾸 눈을 감아버리는 거냐고!"
+            ],
+            Thai: ["เอาอีกแล้ว! ทำไมฉันถึง เอาแต่หลับตาล่ะเนี่ย!"]
         }
     }
 ];
@@ -333,7 +341,7 @@ function playVoiceline() {
 			track.play().catch(finish);
 
 			if (dialogBox) {
-				textbox.textContent = dialog[window.selectedLanguage][index];
+				textbox.textContent = getSubtitleText(dialog, window.selectedLanguage, index);
 				textbox.style.opacity = 1;
 			}
 		},
@@ -503,6 +511,16 @@ function setMouse(event) {
 	return { x: ax - canvas.width * positionX, y: ay - canvas.height * positionY };
 }
 
+function getSubtitleText(dialog, language, index) {
+	let text = dialog?.[language]?.[index];
+	if (text == null && language === 'Thai') {
+		language = 'English';
+		text = dialog?.[language]?.[index];
+	}
+	textbox.lang = subtitleLocales[language];
+	return text ?? "";
+}
+
 function updateSubtitleLanguage() {
 	let language = subtitleLanguagePreference;
 	if (language === 'auto') {
@@ -516,6 +534,8 @@ function updateSubtitleLanguage() {
 			language = 'Japanese';
 		} else if (primary === 'ko' || primary === 'korean' || primary === 'koreana') {
 			language = 'Korean';
+		} else if (primary === 'th' || primary === 'thai') {
+			language = 'Thai';
 		} else {
 			language = 'English';
 		}
@@ -525,7 +545,7 @@ function updateSubtitleLanguage() {
 	window.selectedLanguage = language;
 	textbox.lang = subtitleLocales[language];
 	const clip = currentTracks.at(-1);
-	if (dialogBox && clip) textbox.textContent = clip.dialog[language][clip.index];
+	if (dialogBox && clip) textbox.textContent = getSubtitleText(clip.dialog, language, clip.index);
 }
 
 function init() {
